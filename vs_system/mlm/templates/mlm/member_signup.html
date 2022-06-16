@@ -1,0 +1,250 @@
+{% extends "mlm/base.html" %}
+
+{% block title %} Forms Validation {% endblock %} 
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini {% endblock body_class %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free-6.1.1/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}    
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header py-0">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Registration</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active">Registration</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">New Member Details</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div class="card-body">
+                {% comment %} <div class="form-group">
+                  <form method="post">
+                    {% csrf_token %} {% endcomment %}
+                <div class="form-group">
+                  <form method="post" class="row g-3 needs-validation" novalidate>
+                    {% csrf_token %}
+                    <div class="col-md-4">
+                      <label class="form-label">First name</label>
+                        {{form.first_name}}
+                      <div class="invalid-feedback">
+                        Please provide a valid first name.
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Middle name</label>
+                        {{form.middle_name}}
+                      <div class="invalid-feedback">
+                        Please provide a valid middle name.
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Last name</label>
+                        {{form.last_name}}
+                      <div class="invalid-feedback">
+                        Please provide a valid last name.
+                      </div>
+                    </div>
+
+                    {% comment %} <div class="col-md-4">
+                      <label for="validationCustomUsername" class="form-label">Username</label>
+                      <div class="input-group has-validation">
+                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                          Please choose a username.
+                        </div>
+                      </div>
+                    </div> {% endcomment %}
+
+                    <div class="col-md-6">
+                      <label class="form-label">Address</label>
+                        {{form.address}}
+                      <div class="invalid-feedback">
+                        Please provide a valid address.
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Contact no.</label>
+                        {{form.contact_number}}
+                      <div class="invalid-feedback">
+                        Please provide a contact number.
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Birth date</label>
+                        {{form.birth_date}}
+                      <div class="invalid-feedback">
+                        Please provide a birth date.
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      {% comment %} <label class="form-label">Sponsor</label> {% endcomment %}
+                        {{form.sponsor | as_crispy_field}}
+                      <div class="invalid-feedback">
+                        Please provide a valid sponsor.
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Placement</label>
+                        {{form.placement}}
+                      <div class="invalid-feedback">
+                        Please provide a valid placement.
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="form-label">Signup package</label>
+                        {{form.signup_package}}
+                      <div class="invalid-feedback">
+                        Please provide a valid signup package.
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <label class="form-label">Signup date</label>
+                        {{form.signup_date}}
+                      <div class="invalid-feedback">
+                        Please provide a signup date.
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                      {% comment %} <label class="form-label">Username</label> {% endcomment %}
+                        {{form.username | as_crispy_field}}
+                      <div class="invalid-feedback">
+                        Please provide a valid username.
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      {% comment %} <label class="form-label"></label> {% endcomment %}
+                        {{form.email | as_crispy_field}}
+                      <div class="invalid-feedback">
+                        Please provide a valid username.
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      {% comment %} <label class="form-label">Password</label> {% endcomment %}
+                        {{form.password1 | as_crispy_field}}
+                      <div class="invalid-feedback">
+                        Please provide a valid password.
+                      </div>
+                    </div>
+                    <div class="col-md-2" >
+                      {% comment %} <label class="form-label">Confirm password</label> {% endcomment %}
+                        {{form.password2 | as_crispy_field}}
+                    </div>
+                
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Submit form</button>
+                    </div>
+                    
+                  </form>
+                  
+                    {% comment %} {% for field in form %}
+                      <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+                        {% if field.help_text %}
+                          <small style="color: grey">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                          <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                      </p>
+                    {% endfor %} {% endcomment %}
+                    {% comment %} <button type="submit">Sign up</button>
+                  </form>{% endcomment %}
+                </div> 
+              </div>
+                <!-- /.card -->
+            </div> 
+            <!--/.col (left) -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid --> 
+      </div>
+      <!-- /Main section -->
+    </section>
+
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- jquery-validation -->
+  <script src="/static/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+  <script src="/static/assets/plugins/jquery-validation/additional-methods.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/static/assets/js/demo.js"></script>
+  
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  </script>
+
+{% endblock javascripts %}

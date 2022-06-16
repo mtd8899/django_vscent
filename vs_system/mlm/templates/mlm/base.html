@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/static/assets/favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="#"/>
+
+  <title>
+    Victory Scent - {% block title %}{% endblock %} | Management System
+  </title> 
+
+  {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+<body class="hold-transition {% block body_class %}{% endblock body_class %}">
+  
+<div class="wrapper">
+
+    {% include 'mlm/navigation.html' %}
+
+    {% include 'mlm/sidebar.html' %}
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor%}
+    {% endif %}
+
+    {% block content %}{% endblock content %}
+
+    {% include 'mlm/footer.html' %}
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+   
+    {% comment %}  
+   <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+      <img src="/static/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Victory Scent Unlimited</span>
+    </a> 
+    {% endcomment %}
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="/static/assets/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="{% url 'logout' %}" class="d-block">
+            {{ request.user.username }} - Logout
+          </a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+         
+               <li class="nav-item">
+                 {% url 'home' as vhome %}
+                <a href="{{vhome}}" class="nav-link {% if request.path == vhome %} active {% endif %}">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+              
+              {% url 'genealogy' as vgenealogy %}
+              {% url 'downlines' as vdownlines %}
+              {% url 'referrals' as vreferrals %}
+              <li class="nav-item has-treeview {% if request.path == vgenealogy or request.path == vdownlines or request.path == vreferrals  %} menu-open {% endif %}">
+                <a href="#" class="nav-link {% if request.path == vgenealogy or request.path == vdownlines or request.path == vreferrals %} active {% endif %}">
+                  <i class="nav-icon fas fa-thin fa-network-wired"></i>
+                  <p>
+                    Network
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{vgenealogy}}" class="nav-link {% if request.path == vgenealogy %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Genealogy Tree</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vdownlines}}" class="nav-link {% if request.path == vdownlines %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Downlines</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vreferrals}}" class="nav-link {% if request.path == vreferrals %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Referrals</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                {% url 'member-signup' as vreg %}
+                <a href="{{vreg}}" class="nav-link {% if request.path == vreg %} active {% endif %}">
+                  <i class="nav-icon fas fa-thin fa-id-card"></i>
+                  <p>
+                    Register
+                  </p>
+                </a>
+              </li>
+
+              {% url 'wallet_info' as vwallet_info %}
+              {% url 'wallet_manage_fund' as vmanage_fund %}
+              {% url 'wallet_payout_request' as vpayout_request %}
+              <li class="nav-item has-treeview {% if request.path == vwallet_info or request.path == vmanage_fund or request.path == vpayout_request  %} menu-open {% endif %}">
+                <a href="#" class="nav-link {% if request.path == vwallet_info or request.path == vmanage_fund or request.path == vpayout_request %} active {% endif %}">
+                  <i class="nav-icon fas fa-solid fa-wallet"></i>
+                  <p>
+                    Wallet
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{vwallet_info}}" class="nav-link {% if request.path == vwallet_info %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Wallet Info </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vmanage_fund}}" class="nav-link {% if request.path == vmanage_fund %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Manage Fund</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vpayout_request}}" class="nav-link {% if request.path == vpayout_request %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Payout Request</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+  
+              <li class="nav-item">
+                {% url 'payout' as vpayout %}
+                <a href="{{vpayout}}" class="nav-link {% if request.path == vpayout %} active {% endif %}">
+                  <i class="nav-icon fas fa-hand-holding-usd"></i>
+                  <p>
+                    Payout
+                  </p>
+                </a>
+              </li>
+
+              {% url 'member_binary_report' as vmember_binary_rep %}
+              {% url 'member_comm_report' as vmember_comm_report %}
+              {% url 'member_sponsor_report' as vmember_sponsor_report %}
+              <li class="nav-item has-treeview {% if request.path == vmember_binary_rep or request.path == vmember_comm_report or request.path == vmember_sponsor_report  %} menu-open {% endif %}">
+                <a href="#" class="nav-link {% if request.path == vmember_binary_rep or request.path == vmember_comm_report or request.path == vmember_sponsor_report %} active {% endif %}">
+                  <i class="nav-icon fas fa-thin fa-print"></i>
+                  <p>
+                    Report
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{vmember_sponsor_report}}" class="nav-link {% if request.path == vmember_sponsor_report %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Member-Sponsor Report</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vmember_comm_report}}" class="nav-link {% if request.path == vmember_comm_report %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Member-Commision Report</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vmember_binary_rep}}" class="nav-link {% if request.path == vmember_binary_rep   %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Binary_History Report</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              {% url 'plan_settings' as vplan_settings %}
+              {% url 'web_settings' as vweb_settings %}
+              <li class="nav-item has-treeview {% if request.path == vplan_settings or request.path == vweb_settings  %} menu-open {% endif %}">
+                <a href="#" class="nav-link {% if request.path == vplan_settings or request.path == vweb_settings %} active {% endif %}">
+                  <i class="nav-icon fas fa-solid fa-wrench"></i>
+                  <p>
+                    Settings
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{vplan_settings}}" class="nav-link {% if request.path == vplan_settings %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Plan Settings</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vweb_settings}}" class="nav-link {% if request.path == vweb_settings %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Web Site</p>
+                    </a>
+                  </li>
+                  
+                </ul>
+              </li>
+
+              {% url 'member_acc_settings' as vaccount_settings %}
+              {% url 'member_payment_details' as vuser_payment_details %}
+              {% url 'member_login_settings' as vuser_login %}
+              <li class="nav-item has-treeview {% if request.path == vaccount_settings or request.path == vuser_payment_details or request.path == vuser_login  %} menu-open {% endif %}">
+                <a href="#" class="nav-link {% if request.path == vaccount_settings or request.path == vuser_payment_details or request.path == vuser_login %} active {% endif %}">
+                  <i class="nav-icon fas fa-solid fa-people-arrows"></i>
+                  <p>
+                    Member Management
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{vaccount_settings}}" class="nav-link {% if request.path == vaccount_settings %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Account Settings</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vuser_payment_details}}" class="nav-link {% if request.path == vuser_payment_details %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>User Payment Details</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{vuser_login}}" class="nav-link {% if request.path == vuser_login %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>User Login</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              
+              {% url 'manage_product' as vmanage_product %}
+              <li class="nav-item has-treeview {% if request.path == vmanage_product  %} menu-open {% endif %}">
+                <a href="#" class="nav-link {% if request.path == vmanage_product %} active {% endif %}">
+                  <i class="nav-icon fas fa-solid fa-folder-plus"></i>
+                  <p>
+                    System Management
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{vmanage_product}}" class="nav-link {% if request.path == vmanage_product %} active {% endif %}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Product Management</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  
